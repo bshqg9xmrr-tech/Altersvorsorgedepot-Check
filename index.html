@@ -397,8 +397,8 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     <label>Monatlicher Eigenbeitrag <span id="lbm">150 €</span></label>
                     <input type="range" id="rBeitrag" min="10" max="150" value="150" step="5" aria-label="Monatlicher Eigenbeitrag">
                     <div class="range-vals"><span>10 €</span><span>150 € (Max.)</span></div>
-                    <div id="zoneHint" style="display:none;margin-top:0.5rem;background:#d1fae5;border:1px solid #6ee7b7;border-radius:6px;padding:0.45rem 0.75rem;font-size:0.77rem;color:#065f46;">
-                        🎯 <strong>Optimale Zone:</strong> Bis 30 €/Monat erhält der Staat <strong>50 % Zulage</strong> auf Ihren Eigenbeitrag!
+                    <div style="margin-top:0.5rem;background:#d1fae5;border:1px solid #6ee7b7;border-radius:6px;padding:0.45rem 0.75rem;font-size:0.77rem;color:#065f46;">
+                        💡 <strong>Tipp:</strong> Optimaler Eigenbeitrag: <strong>30 €/Monat</strong> – maximale Ausnutzung der 50&nbsp;%-Förderquote.
                     </div>
                 </div>
                 <div class="form-group">
@@ -963,8 +963,6 @@ function updateCalc(){
     var pct = Math.min(100, res.zg / (res.eg + res.zg) * 100);
     document.getElementById('rBarFill').style.width = pct + '%';
     document.getElementById('rBonusBox').style.display = u ? 'block' : 'none';
-    // Grüner Hinweis bei ≤ 30 €/Monat (50%-Zone)
-    document.getElementById('zoneHint').style.display = m <= 30 ? 'block' : 'none';
 }
 ['rBeitrag','rJahre','rRendite','rKinder'].forEach(function(id){
     document.getElementById(id).addEventListener('input', updateCalc);
