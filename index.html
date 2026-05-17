@@ -397,6 +397,9 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     <label>Monatlicher Eigenbeitrag <span id="lbm">150 €</span></label>
                     <input type="range" id="rBeitrag" min="10" max="150" value="150" step="5" aria-label="Monatlicher Eigenbeitrag">
                     <div class="range-vals"><span>10 €</span><span>150 € (Max.)</span></div>
+                    <div id="zoneHint" style="display:none;margin-top:0.5rem;background:#d1fae5;border:1px solid #6ee7b7;border-radius:6px;padding:0.45rem 0.75rem;font-size:0.77rem;color:#065f46;">
+                        🎯 <strong>Optimale Zone:</strong> Bis 30 €/Monat erhält der Staat <strong>50 % Zulage</strong> auf Ihren Eigenbeitrag!
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Anlagedauer <span id="lbj">30 Jahre</span></label>
@@ -418,7 +421,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     Unter 25 Jahre (Berufseinsteigerbonus: einmalig 200 €)
                 </label>
                 <div class="calc-hint">
-                    <strong>Hinweis:</strong> Max. förderfähige Einzahlung: <strong>1.800 €/Jahr (150 €/Monat)</strong>. Grundzulage: 50 % auf die ersten 360 €, 25 % ab 360 € bis max. 1.800 € = max. <strong>540 €/Jahr</strong>. Kosten Standardprodukt: max. <strong>1,0 % p.a.</strong> Die Rendite ist keine Garantie – Kapitalmärkte unterliegen Schwankungen.
+                    <strong>Hinweis:</strong> Gesetzliche Mindesteinzahlung: keine (Anbieter legen eigene Minima fest). Max. förderfähig: <strong>1.800 €/Jahr (150 €/Monat)</strong>. Grundzulage: 50 % auf die ersten 360 €/Jahr, 25 % ab 360 € bis max. 1.800 € = max. <strong>540 €/Jahr</strong>. Kosten Standardprodukt: max. <strong>1,0 % p.a.</strong> Keine Anlageberatung – Renditen nicht garantiert.
                 </div>
             </div>
             <div class="calc-result reveal" id="calcResult" aria-live="polite">
@@ -440,7 +443,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     </div>
                     <div class="res-item">
                         <div class="res-item-val" id="rFoerderq">–</div>
-                        <div class="res-item-lbl">Staatl. Förderquote</div>
+                        <div class="res-item-lbl">Zulage je 100 € Eigenanteil</div>
                     </div>
                 </div>
                 <div class="res-bar-wrap">
@@ -937,8 +940,9 @@ function calcEndkapital(m, j, r, k, u){
     var eg = jb * j;
     var zg = jahreszulage * j + einmalbonus;
     var rg = c - eg - zg;
-    var fq = (eg + zg) > 0 ? zg / (eg + zg) * 100 : 0;
-    return { cap: c, eg: eg, zg: zg, rg: rg, fq: fq, gz: gz, kz: kz, einmalbonus: einmalbonus };
+    // Zulage als % des Eigenbeitrags (jährlich, ohne Einmalbonus für Klarheit)
+    var fq = eg > 0 ? (jahreszulage / jb) * 100 : 0;
+    return { cap: c, eg: eg, zg: zg, rg: rg, fq: fq, gz: gz, kz: kz, einmalbonus: einmalbonus, jb: jb };
 }
 function updateCalc(){
     var m = +document.getElementById('rBeitrag').value;
@@ -955,10 +959,12 @@ function updateCalc(){
     document.getElementById('rEig').textContent = fmt(res.eg);
     document.getElementById('rZul').textContent = fmt(res.zg);
     document.getElementById('rRend').textContent = fmt(res.rg);
-    document.getElementById('rFoerderq').textContent = res.fq.toFixed(1).replace('.',',') + ' %';
+    document.getElementById('rFoerderq').textContent = res.fq.toFixed(1).replace('.',',') + ' €';
     var pct = Math.min(100, res.zg / (res.eg + res.zg) * 100);
     document.getElementById('rBarFill').style.width = pct + '%';
     document.getElementById('rBonusBox').style.display = u ? 'block' : 'none';
+    // Grüner Hinweis bei ≤ 30 €/Monat (50%-Zone)
+    document.getElementById('zoneHint').style.display = m <= 30 ? 'block' : 'none';
 }
 ['rBeitrag','rJahre','rRendite','rKinder'].forEach(function(id){
     document.getElementById(id).addEventListener('input', updateCalc);
