@@ -447,12 +447,14 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     </div>
                 </div>
                 <div class="res-bar-wrap">
-                    <div class="res-bar-lbl">
-                        <span>Eigenanteil</span>
-                        <span>Staat</span>
-                        <span>Rendite</span>
+                    <div class="res-bar" style="height:12px;border-radius:6px;overflow:hidden;display:flex;">
+                        <div id="rBarEigen" style="background:rgba(255,255,255,0.35);transition:width 0.5s ease;height:100%;"></div>
+                        <div id="rBarFoerd" style="background:#4ade80;transition:width 0.5s ease;height:100%;"></div>
                     </div>
-                    <div class="res-bar"><div class="res-bar-fill" id="rBarFill" style="width:0%"></div></div>
+                    <div class="res-bar-lbl" style="margin-top:0.4rem;">
+                        <span>◼ Eigenanteil</span>
+                        <span style="color:#4ade80;">◼ Förderung</span>
+                    </div>
                 </div>
                 <div class="res-bonus" id="rBonusBox" style="display:none">
                     <strong>+ 200 € Berufseinsteigerbonus</strong> (einmalig) bereits enthalten
@@ -960,8 +962,11 @@ function updateCalc(){
     document.getElementById('rZul').textContent = fmt(res.zg);
     document.getElementById('rRend').textContent = fmt(res.rg);
     document.getElementById('rFoerderq').textContent = res.fq.toFixed(1).replace('.',',') + ' €';
-    var pct = Math.min(100, res.zg / (res.eg + res.zg) * 100);
-    document.getElementById('rBarFill').style.width = pct + '%';
+    var total = res.eg + res.zg;
+    var eigenPct = total > 0 ? (res.eg / total * 100) : 100;
+    var foerdPct = total > 0 ? (res.zg / total * 100) : 0;
+    document.getElementById('rBarEigen').style.width = eigenPct + '%';
+    document.getElementById('rBarFoerd').style.width = foerdPct + '%';
     document.getElementById('rBonusBox').style.display = u ? 'block' : 'none';
 }
 ['rBeitrag','rJahre','rRendite','rKinder'].forEach(function(id){
