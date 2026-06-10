@@ -405,7 +405,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                 <h3>Ihre Angaben</h3>
                 <div class="form-group">
                     <label>Monatlicher Eigenbeitrag <span id="lbm">150 €</span></label>
-                    <input type="range" id="rBeitrag" min="10" max="150" value="150" step="5" aria-label="Monatlicher Eigenbeitrag">
+                    <input type="range" id="rBeitrag" min="10" max="150" value="30" step="5" aria-label="Monatlicher Eigenbeitrag">
                     <div class="range-vals"><span>10 €</span><span>150 € (Max.)</span></div>
                     <div style="margin-top:0.4rem;font-size:0.75rem;color:var(--text3);">
                         Tipp: 30 €/Monat = maximale 50&nbsp;%-Förderquote
@@ -474,6 +474,21 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                 </div>
             </div>
         </div>
+
+        <!-- Hinweise unter dem Rechner -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;" class="reveal">
+            <div class="calc-hint">
+                <strong>💡 Wie viel sollte ich insgesamt sparen?</strong><br>
+                Experten empfehlen, <strong>10–15 % des monatlichen Nettoeinkommens</strong> für die Altersvorsorge zurückzulegen. Das Altersvorsorgedepot kann ein wichtiger Baustein davon sein.
+                <br><span style="font-size:0.72rem;margin-top:0.3rem;display:block;">Quelle: <a href="https://www.finanztip.de/altersvorsorge/" target="_blank" rel="noopener" style="color:var(--hint-text);text-decoration:underline;">Finanztip.de – Altersvorsorge</a></span>
+            </div>
+            <div class="calc-hint">
+                <strong>📋 Das Altersvorsorgedepot ist nur ein Baustein</strong><br>
+                Neben dem Altersvorsorgedepot gibt es weitere Möglichkeiten: betriebliche Altersvorsorge, ETF-Sparpläne, Immobilien u.v.m. Eine individuelle Strategie lohnt sich.
+                <br><a href="#kontakt" style="display:inline-block;margin-top:0.5rem;background:var(--primary);color:#fff;padding:0.35rem 0.8rem;border-radius:var(--rs);font-size:0.76rem;font-weight:600;text-decoration:none;">→ Unverbindlich beraten lassen</a>
+            </div>
+        </div>
+        <style>@media(max-width:600px){.calc-hints-grid{grid-template-columns:1fr!important}}</style>
     </div>
 </section>
 
