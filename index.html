@@ -550,7 +550,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     <tr>
                         <td>Zielgruppe</td>
                         <td>Arbeitnehmer, Beamte</td>
-                        <td class="col-avd-cell"><strong>AN, Beamte, Selbstständige, Freiberufler</strong></td>
+                        <td class="col-avd-cell"><strong>Arbeitnehmer, Beamte, Selbstständige, Freiberufler</strong></td>
                         <td>Alle</td>
                     </tr>
                     <tr>
@@ -792,7 +792,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
         <h3>Angaben gemäß § 5 TMG</h3>
         <p>Markus Wanzek<br>Speditionsstraße 2<br>40221 Düsseldorf</p>
         <h3>Kontakt</h3>
-        <p>Telefon: +49 (0) 151 42240793<br>E-Mail: info@markuswanzek.de</p>
+        <p>Telefon: +49 (0) 151 42240793<br>E-Mail: info@altersvorsorgecheck.io</p>
         <h3>Berufsrechtliche Angaben</h3>
         <p>Zulassung: Versicherungsmakler gem. § 34d GewO &amp; Finanzanlagevermittler gem. § 34f GewO<br>
         Registerbehörde: IHK Düsseldorf, Ernst-Schneider-Platz 1, 40212 Düsseldorf<br>
@@ -810,7 +810,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
         <button class="modal-close" onclick="closeModal('daten')" aria-label="Schließen">✕</button>
         <h2 id="m-daten-title">Datenschutzerklärung</h2>
         <h3>Verantwortlicher</h3>
-        <p>Markus Wanzek, Speditionsstraße 2, 40221 Düsseldorf, info@markuswanzek.de</p>
+        <p>Markus Wanzek, Speditionsstraße 2, 40221 Düsseldorf, info@altersvorsorgecheck.io</p>
         <h3>Datenerhebung</h3>
         <p>Diese Website erhebt keine personenbezogenen Daten über Tracking-Cookies oder Analytics-Dienste. Der Förderrechner speichert keine Daten auf Servern.</p>
         <h3>Kontaktformular</h3>
@@ -820,7 +820,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
         <h3>Rechtsgrundlagen</h3>
         <p>Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung). Speicherdauer: Ihre Anfragen werden 6 Monate nach Abschluss der Bearbeitung gelöscht.</p>
         <h3>Ihre Rechte</h3>
-        <p>Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wenden Sie sich an: info@markuswanzek.de</p>
+        <p>Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wenden Sie sich an: info@altersvorsorgecheck.io</p>
         <h3>Beschwerderecht</h3>
         <p>Sie können sich jederzeit an die zuständige Aufsichtsbehörde wenden: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW, <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>
     </div>
@@ -841,7 +841,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
         <h3>Schlichtungsstelle</h3>
         <p>Versicherungsombudsmann e. V., Postfach 08 06 32, 10006 Berlin, <a href="https://www.versicherungsombudsmann.de" target="_blank" rel="noopener">www.versicherungsombudsmann.de</a></p>
         <h3>Beschwerden</h3>
-        <p>Beschwerden richten Sie bitte an: info@markuswanzek.de oder an die IHK Düsseldorf als zuständige Aufsichtsbehörde.</p>
+        <p>Beschwerden richten Sie bitte an: info@altersvorsorgecheck.io oder an die IHK Düsseldorf als zuständige Aufsichtsbehörde.</p>
     </div>
 </div>
 
@@ -926,7 +926,7 @@ input[type=range] { width: 100%; height: 4px; accent-color: var(--primary); curs
                     <p style="font-size:0.83rem;color:var(--text2);margin-bottom:1rem">Anfragen ohne Tracking-Link (organische Besucher) werden an diese Adresse geleitet.</p>
                     <div class="ap-form-group" style="margin-bottom:1rem">
                         <label for="apDefEmail">Standard-E-Mail</label>
-                        <input type="email" id="apDefEmail" class="ap-input" placeholder="info@markuswanzek.de">
+                        <input type="email" id="apDefEmail" class="ap-input" placeholder="info@altersvorsorgecheck.io">
                     </div>
                     <button class="ap-btn ap-btn-primary" onclick="apSaveEmail()">Speichern</button>
                     <div id="apEmailAlert" style="margin-top:0.8rem"></div>
@@ -1057,7 +1057,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 // =====================
 // CONTACT FORM
 // =====================
-function apGetDefEmail(){ return localStorage.getItem('vk_def_email') || 'info@markuswanzek.de'; }
+function apGetDefEmail(){ return localStorage.getItem('vk_def_email') || 'info@altersvorsorgecheck.io'; }
 document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
     var fd = new FormData(this);
